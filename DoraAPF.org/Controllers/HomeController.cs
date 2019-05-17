@@ -17,7 +17,35 @@ namespace DoraAPF.org.Controllers
 
         public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
+            ViewData["Message"] = "About Dora animal fundation protection.";
+
+            return View();
+        }
+
+        public IActionResult Story()
+        {
+            ViewData["Message"] = "Dora animal fundation protection Story.";
+
+            return View();
+        }
+
+        public IActionResult Team()
+        {
+            ViewData["Message"] = "Dora animal fundation protection team.";
+
+            return View();
+        }
+
+        public IActionResult Activities()
+        {
+            ViewData["Message"] = "Dora animal fundation protection activity.";
+
+            return View();
+        }
+
+        public IActionResult Donate()
+        {
+            ViewData["Message"] = "Dora animal fundation protection Donation.";
 
             return View();
         }

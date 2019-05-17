@@ -28,6 +28,26 @@ body {
     margin: 15px;
 }
 
+.navbar {
+    /*//background-color: #00337f;*/
+    background-color: #f2f2f2;
+    border-bottom-color: #f2f2f2;
+}
+
+.navbar-inverse .navbar-header > a {
+    font-size: 22px;
+    color: #000;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    font-size: 18px;
+    color: #000;
+}
+
+.body-content{
+    min-height: 500px;
+}
+
 /* Hide/rearrange for smaller screens */
 @media screen and (max-width: 767px) {
     /* Hide captions */
