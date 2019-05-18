@@ -1,0 +1,12 @@
+<svg width="257.5" height="31.667000000000005" xmlns="http://www.w3.org/2000/svg">
+
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="402" width="582" y="-1" x="-1"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <path id="svg_1" d="m2.76,15.782c0,3.941 -0.468,7.773 -1.346,11.446l15.659,-11.446l-15.554,-11.011c0.812,3.54 1.241,7.225 1.241,11.011z" fill="#F4792A"/>
+  <text font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Trebuchet MS', Gadget, sans-serif" font-size="14" id="svg_25" y="19.76579" x="21.041667" stroke-width="0" stroke="#000" fill="#000000">Dora Animal Protection Foundation</text>
+ </g>
+</svg>
