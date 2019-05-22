@@ -1,7 +1,7 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\ 
 for details on configuring this project to bundle and minify static web assets. */
 body {
-    padding-top: 50px;
+    padding-top: 100px;
     padding-bottom: 20px;
 }
 
@@ -39,11 +39,20 @@ body {
     color: #000;
 }
 
-.navbar-inverse .navbar-nav > li > a {
-    font-size: 18px;
-    color: #000;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+.navbar-inverse .navbar-nav > .active > a,
+.navbar-inverse .navbar-nav > .open > a,
+.navbar-inverse .navbar-nav > a:hover,
+.navbar-inverse .navbar-nav > .active > a:focus {
+    background-color: #ea6c11;
 }
+
+    /*.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus*/
+
+    .navbar-inverse .navbar-nav > li > a {
+        font-size: 18px;
+        color: #000;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    }
 
 .navbar a.donate-link {
     
