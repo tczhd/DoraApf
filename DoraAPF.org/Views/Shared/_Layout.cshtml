@@ -42,9 +42,9 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">ACTIVITIES <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a asp-controller="Home" asp-action="Activities" asp-route-id="1">ACTIVITIES</a></li>
-                            <li><a asp-controller="Home" asp-action="Activities" asp-route-id="1">NEWS</a></li>
-                            <li><a asp-controller="Home" asp-action="Activities" asp-route-id="1">DONATION</a></li>
+                            <li><a asp-controller="Home" asp-action="Activities" >ACTIVITIES</a></li>
+                            <li><a asp-controller="Home" asp-action="News" >NEWS</a></li>
+                            <li><a asp-controller="Home" asp-action="Letters" >LETTERS</a></li>
                         </ul>
                     </li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Donate">DONATE</a></li>
@@ -84,7 +84,7 @@
                 crossorigin="anonymous"
                 integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
         </script>
-        <script src="~/js/site.min.js" asp-append-version="true"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
     </environment>
 
     @RenderSection("Scripts", required: false)

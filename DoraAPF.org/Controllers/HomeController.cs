@@ -43,6 +43,20 @@ namespace DoraAPF.org.Controllers
             return View();
         }
 
+        public IActionResult News()
+        {
+            ViewData["Message"] = "Dora animal fundation protection news.";
+
+            return View();
+        }
+
+        public IActionResult Letters()
+        {
+            ViewData["Message"] = "Dora animal fundation protection letters.";
+
+            return View();
+        }
+
         public IActionResult Donate()
         {
             ViewData["Message"] = "Dora animal fundation protection Donation.";

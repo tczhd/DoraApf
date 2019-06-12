@@ -80,6 +80,12 @@ body {
     color: coral;
 
 }
+
+video {
+    width: 100% !important;
+    height: auto !important;
+}
+
 /* Hide/rearrange for smaller screens */
 @media screen and (max-width: 767px) {
     /* Hide captions */
