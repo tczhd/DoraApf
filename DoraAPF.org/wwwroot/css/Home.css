@@ -1,0 +1,31 @@
+﻿div.section-group {
+    margin: 0px 0px;
+}
+
+
+    
+    div.section-item {
+        padding: 10px;
+        text-align: center;
+        margin-top: 10px;
+    }
+
+div.section-item div.section-card {
+    background-color: lightgray;
+    padding:30px;
+}
+
+div.section-group img {
+    max-width: 100%;
+    height: 400px;
+}
+
+div.section-group div.button{
+    padding:20px 0;
+    font-size:18px;
+}
+
+div.section-group h2.title {
+   color:orangered;
+   padding-bottom:20px;
+}
