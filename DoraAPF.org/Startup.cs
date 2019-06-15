@@ -34,9 +34,21 @@ namespace DoraAPF.org
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            //services.AddDbContext<ApplicationDbContext>(options =>
+            //    options.UseSqlServer(
+            //        Configuration.GetConnectionString("DefaultConnection")));
+
+
+            services.AddDbContext<DoraAPFContext>(options =>
+       options.UseSqlServer(
+           Configuration.GetConnectionString("DefaultConnection")
+           , b => b.MigrationsAssembly("DoraAPF.org")));
+
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
+                    Configuration.GetConnectionString("DefaultConnection")
+                    , b => b.MigrationsAssembly("DoraAPF.org")));
+
             services.AddDefaultIdentity<IdentityUser>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
