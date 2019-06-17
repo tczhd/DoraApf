@@ -16,6 +16,8 @@ using DoraAPF.org.Facade.Interfaces.Repository;
 using DoraAPF.org.Data.Repository.Base;
 using DoraAPF.org.Facade.Interfaces;
 using DoraAPF.org.Facade.Services;
+using DoraAPF.org.Facade.Interfaces.Payment;
+using DoraAPF.org.Facade.Services.Payment;
 
 namespace DoraAPF.org
 {
@@ -73,6 +75,7 @@ namespace DoraAPF.org
             services.AddScoped(typeof(IAsyncRepository<>), typeof(EfRepository<>));
 
             services.AddScoped<IVisitorService, VisitorService>();
+            services.AddScoped<IThirdPartyPaymentService, HelcimPaymentService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }

@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using DoraAPF.org.Models;
 using DoraAPF.org.Facade.Interfaces;
 using Microsoft.AspNetCore.Http;
+using DoraAPF.org.Facade.Interfaces.Payment;
+using DoraAPF.org.Models.Payment.Helcim;
 
 namespace DoraAPF.org.Controllers
 {
@@ -14,11 +16,13 @@ namespace DoraAPF.org.Controllers
     {
         private readonly IVisitorService _visitorService;
         private IHttpContextAccessor _accessor;
+        private readonly IThirdPartyPaymentService _helcimPaymentService;
 
-        public HomeController(IVisitorService visitorService, IHttpContextAccessor accessor)
+        public HomeController(IVisitorService visitorService, IHttpContextAccessor accessor, IThirdPartyPaymentService helcimPaymentService)
         {
             _visitorService = visitorService;
             _accessor = accessor;
+            _helcimPaymentService = helcimPaymentService;
         }
         public IActionResult Index()
         {
@@ -34,6 +38,8 @@ namespace DoraAPF.org.Controllers
             }
             
             _visitorService.SaveVisitor(ip, browserInfo);
+
+            //test();
 
             return View();
         }
@@ -103,6 +109,34 @@ namespace DoraAPF.org.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        private void test()
+        {
+            var request = new HelcimBasicRequestModel()
+            {
+                AccountId = "2500026611",
+                ApiToken = "4x6xjkens5fr6eMa28m24mdD9",
+                OrderNumber = "Dora-" + DateTime.Now.ToString("yyyyMMddhhmmss"),
+                TransactionType = "purchase",
+                TerminalId = "70028",
+                Test = true,
+                Amount = 5,
+                CardToken = "defcbf159f5434f7bbd6a3",
+                CardF4L4 = "54545454",
+                Comments = "Card on file payment",
+                CreditCard = new HelcimCreditCardRequestModel()
+                {
+                    CardHolderName = "Jane Smith",
+                    cardNumber = "5454545454545454",
+                    cardExpiry = "1020",
+                    cardCVV = "100",
+                    cardHolderAddress = "123 Road Street",
+                    cardHolderPostalCode = "90212"
+                }
+            };
+
+            var result = _helcimPaymentService.ProcessPayment(request);
         }
     }
 }
