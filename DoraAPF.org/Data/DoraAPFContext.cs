@@ -18,7 +18,7 @@ namespace DoraAPF.org.Data
         {
         }
 
-        public virtual DbSet<VisitorLog> VisitorLog { get; set; }
+        public DbSet<VisitorLog> VisitorLog { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -26,11 +26,14 @@ namespace DoraAPF.org.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<VisitorLog>(entity =>
             {
                 entity.HasKey(e => e.Id);
                 entity.Property(e => e.Id).ValueGeneratedOnAdd();
+                entity.Property(e => e.LocationIP).HasMaxLength(100);
+                entity.Property(e => e.BrowserName).HasMaxLength(150);
             });
 
         }

@@ -5,13 +5,36 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using DoraAPF.org.Models;
+using DoraAPF.org.Interfaces;
+using Microsoft.AspNetCore.Http;
 
 namespace DoraAPF.org.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IVisitorService _visitorService;
+        private IHttpContextAccessor _accessor;
+
+        public HomeController(IVisitorService visitorService, IHttpContextAccessor accessor)
+        {
+            _visitorService = visitorService;
+            _accessor = accessor;
+        }
         public IActionResult Index()
         {
+            var ip = _accessor.HttpContext.Connection.RemoteIpAddress.ToString();
+            var userAgent = Request.Headers["User-Agent"];
+            var browserInfo = "";
+            if (userAgent.Any()) {
+                browserInfo = userAgent.First();
+                if (browserInfo.Length > 50)
+                {
+                    browserInfo = browserInfo.Substring(0, 50);
+                }
+            }
+            
+            _visitorService.SaveVisitor(ip, browserInfo);
+
             return View();
         }
 

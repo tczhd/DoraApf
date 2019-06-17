@@ -12,6 +12,10 @@ using Microsoft.EntityFrameworkCore;
 using DoraAPF.org.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using DoraAPF.org.Code.Interfaces.Repository;
+using DoraAPF.org.Data.Repository.Base;
+using DoraAPF.org.Interfaces;
+using DoraAPF.org.Service;
 
 namespace DoraAPF.org
 {
@@ -27,6 +31,17 @@ namespace DoraAPF.org
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //services.AddDistributedMemoryCache();
+
+            //services.AddSession(options =>
+            //{
+            //    // Set a short timeout for easy testing.
+            //    options.IdleTimeout = TimeSpan.FromDays(1);
+            //    options.Cookie.HttpOnly = true;
+            //    // Make the session cookie essential
+            //    options.Cookie.IsEssential = true;
+            //});
+
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
@@ -49,8 +64,15 @@ namespace DoraAPF.org
                     Configuration.GetConnectionString("DefaultConnection")
                     , b => b.MigrationsAssembly("DoraAPF.org")));
 
-            services.AddDefaultIdentity<IdentityUser>()
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+            services.AddDefaultIdentity<IdentityUser > ()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
+            services.AddScoped(typeof(IAsyncRepository<>), typeof(EfRepository<>));
+
+            services.AddScoped<IVisitorService, VisitorService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
@@ -71,6 +93,7 @@ namespace DoraAPF.org
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+           // app.UseSession();
             app.UseCookiePolicy();
 
             app.UseAuthentication();

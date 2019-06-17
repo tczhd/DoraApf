@@ -14,6 +14,7 @@ namespace DoraAPF.org.Code.Interfaces.Repository
         void Update(T entity);
         void UpdateOnly(T entity);
         void Delete(T entity);
+        int Count();
         int Count(ISpecification<T> spec);
         void SaveAll();
     }

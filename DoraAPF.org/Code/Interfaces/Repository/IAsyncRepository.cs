@@ -13,6 +13,7 @@ namespace DoraAPF.org.Code.Interfaces.Repository
         Task UpdateAsync(T entity);
         void UpdateOnlyAsync(T entity);
         Task DeleteAsync(T entity);
+        Task<int> CountAsync();
         Task<int> CountAsync(ISpecification<T> spec);
         void AddOnlyAsync(T entity);
         Task SaveAllAsync();

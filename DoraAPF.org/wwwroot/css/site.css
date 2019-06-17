@@ -71,6 +71,16 @@ body {
     border-radius:5px;
 }
 
+
+.navbar div.visitors {
+    float: right;
+    text-align: center;
+    font-size: 18px;
+    padding: 5px 25px;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
 .body-content-without-footer {
     min-height: 500px;
 }

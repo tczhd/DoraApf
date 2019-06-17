@@ -17,7 +17,7 @@
 
   <ItemGroup>
     <Folder Include="Code\Interfaces\" />
-    <Folder Include="NewFolder\" />
+    <Folder Include="Api\" />
   </ItemGroup>
 
 </Project>

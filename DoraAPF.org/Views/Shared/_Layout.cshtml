@@ -31,9 +31,14 @@
                 <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand"><img src="~/images/DoraAnimal.svg" /> </a>
 
             </div>
+
             <div class="donate-wrapper">
                 <a asp-area="" asp-controller="Home" asp-action="Donate" class="donate-link">Please donate</a>
             </div>
+            <div class="visitors">
+                @await Component.InvokeAsync("Visitors", new { userName = "" })
+            </div>
+
             <div class="navbar-collapse collapse clearfix" style="clear:both;">
                 <ul class="nav navbar-nav">
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">HOME</a></li>

@@ -15,9 +15,9 @@ namespace DoraAPF.org.Data.Repository.Base
     /// <typeparam name="T"></typeparam>
     public class EfRepository<T> : IRepository<T>, IAsyncRepository<T> where T : BaseEntity
     {
-        protected readonly ApplicationDbContext _dbContext;
+        protected readonly DoraAPFContext _dbContext;
 
-        public EfRepository(ApplicationDbContext dbContext)
+        public EfRepository(DoraAPFContext dbContext)
         {
             _dbContext = dbContext;
         }
@@ -145,10 +145,20 @@ namespace DoraAPF.org.Data.Repository.Base
         {
            await  _dbContext.SaveChangesAsync();
         }
+        public int Count()
+        {
+            return _dbContext.Set<T>().Count();
+        }
+
 
         public int Count(ISpecification<T> spec)
         {
             return ApplySpecification(spec).Count();
+        }
+
+        public async Task<int> CountAsync()
+        {
+            return await _dbContext.Set<T>().CountAsync();
         }
 
         public async Task<int> CountAsync(ISpecification<T> spec)
