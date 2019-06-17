@@ -1,7 +1,7 @@
 ﻿using DoraAPF.org.Data.Entities;
 using System.Collections.Generic;
 
-namespace DoraAPF.org.Code.Interfaces.Repository
+namespace DoraAPF.org.Facade.Interfaces.Repository
 {
     public interface IRepository<T> where T : BaseEntity
     {

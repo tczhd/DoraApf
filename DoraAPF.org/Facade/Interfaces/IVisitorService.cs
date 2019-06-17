@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace DoraAPF.org.Code.Interfaces
+namespace DoraAPF.org.Facade.Interfaces
 {
     public interface IVisitorService
     {

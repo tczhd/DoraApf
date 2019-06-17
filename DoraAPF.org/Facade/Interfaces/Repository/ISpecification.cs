@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 
-namespace DoraAPF.org.Code.Interfaces.Repository
+namespace DoraAPF.org.Facade.Interfaces.Repository
 {
     public interface ISpecification<T>
     {

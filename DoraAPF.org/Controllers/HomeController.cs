@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using DoraAPF.org.Models;
-using DoraAPF.org.Code.Interfaces;
+using DoraAPF.org.Facade.Interfaces;
 using Microsoft.AspNetCore.Http;
 
 namespace DoraAPF.org.Controllers

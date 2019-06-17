@@ -1,7 +1,7 @@
 ﻿
 using Microsoft.EntityFrameworkCore;
 using DoraAPF.org.Data.Entities;
-using DoraAPF.org.Code.Interfaces.Repository;
+using DoraAPF.org.Facade.Interfaces.Repository;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;

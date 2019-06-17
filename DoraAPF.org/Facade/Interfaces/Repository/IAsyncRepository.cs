@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace DoraAPF.org.Code.Interfaces.Repository
+namespace DoraAPF.org.Facade.Interfaces.Repository
 {
     public interface IAsyncRepository<T> where T : BaseEntity
     {

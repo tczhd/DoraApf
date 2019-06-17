@@ -12,10 +12,10 @@ using Microsoft.EntityFrameworkCore;
 using DoraAPF.org.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using DoraAPF.org.Code.Interfaces.Repository;
+using DoraAPF.org.Facade.Interfaces.Repository;
 using DoraAPF.org.Data.Repository.Base;
-using DoraAPF.org.Code.Interfaces;
-using DoraAPF.org.Code.Services;
+using DoraAPF.org.Facade.Interfaces;
+using DoraAPF.org.Facade.Services;
 
 namespace DoraAPF.org
 {
