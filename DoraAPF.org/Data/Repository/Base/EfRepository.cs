@@ -147,13 +147,13 @@ namespace DoraAPF.org.Data.Repository.Base
         }
         public int Count()
         {
-            return _dbContext.Set<T>().Count();
+            return _dbContext.Set<T>().AsNoTracking().Count();
         }
 
 
         public int Count(ISpecification<T> spec)
         {
-            return ApplySpecification(spec).Count();
+            return ApplySpecification(spec).AsNoTracking().Count();
         }
 
         public async Task<int> CountAsync()
@@ -163,7 +163,7 @@ namespace DoraAPF.org.Data.Repository.Base
 
         public async Task<int> CountAsync(ISpecification<T> spec)
         {
-            return await ApplySpecification(spec).CountAsync();
+            return await ApplySpecification(spec).AsNoTracking().CountAsync();
         }
 
         public async Task<IReadOnlyList<T>> ListAllAsync()

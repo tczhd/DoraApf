@@ -14,8 +14,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using DoraAPF.org.Code.Interfaces.Repository;
 using DoraAPF.org.Data.Repository.Base;
-using DoraAPF.org.Interfaces;
-using DoraAPF.org.Service;
+using DoraAPF.org.Code.Interfaces;
+using DoraAPF.org.Code.Services;
 
 namespace DoraAPF.org
 {

@@ -1,11 +1,11 @@
 ﻿using System.Threading.Tasks;
 using DoraAPF.org.Code.Interfaces.Repository;
 using DoraAPF.org.Data.Entities;
-using DoraAPF.org.Interfaces;
+using DoraAPF.org.Code.Interfaces;
 using DoraAPF.org.Models;
 
 
-namespace DoraAPF.org.Service
+namespace DoraAPF.org.Code.Services
 {
     public class VisitorService : IVisitorService
     {

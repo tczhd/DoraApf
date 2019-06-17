@@ -1,4 +1,4 @@
-﻿using DoraAPF.org.Interfaces;
+﻿using DoraAPF.org.Code.Interfaces;
 using DoraAPF.org.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -17,13 +17,14 @@ namespace DoraAPF.org.ViewComponents
             _visitorService = visitorService;
         }
 
-        public async Task<IViewComponentResult> InvokeAsync(string userName)
+        public IViewComponentResult Invoke(string userName)
         {
             var count = _visitorService.GetVisitors();
-            var data = new VisitorsViewComponentViewModel {
+            var data = new VisitorsViewComponentViewModel
+            {
                 VisitorsCount = count
             };
-             return View(data);
+            return View(data);
         }
     }
 }

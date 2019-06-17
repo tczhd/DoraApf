@@ -16,8 +16,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Code\Interfaces\" />
     <Folder Include="Api\" />
+    <Folder Include="Code\Interfaces\Payment\" />
   </ItemGroup>
 
 </Project>
