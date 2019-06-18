@@ -61,11 +61,11 @@ namespace DoraAPF.org.Facade.Services.Payment
             {
                 var creditCard = (HelcimCreditCardRequestModel)paymentData.CreditCard;
                 values["cardHolderName"] = creditCard.CardHolderName;
-                values["cardNumber"] = creditCard.cardNumber;
-                values["cardExpiry"] = creditCard.cardExpiry;
-                values["cardCVV"] = creditCard.cardCVV;
-                values["cardHolderAddress"] = creditCard.cardHolderAddress;
-                values["cardHolderPostalCode"] = creditCard.cardHolderPostalCode;
+                values["cardNumber"] = creditCard.CardNumber;
+                values["cardExpiry"] = creditCard.CardExpiry;
+                values["cardCVV"] = creditCard.CardCVV;
+                values["cardHolderAddress"] = creditCard.CardHolderAddress;
+                values["cardHolderPostalCode"] = creditCard.CardHolderPostalCode;
             }
             else
             {
@@ -137,9 +137,9 @@ namespace DoraAPF.org.Facade.Services.Payment
             {
                 var creditCard = (HelcimCreditCardRequestModel)paymentData.CreditCard;
                 values["cardHolderName"] = creditCard.CardHolderName;
-                values["cardNumber"] = creditCard.cardNumber;
-                values["cardExpiry"] = creditCard.cardExpiry;
-                values["cardCVV"] = creditCard.cardCVV;
+                values["cardNumber"] = creditCard.CardNumber;
+                values["cardExpiry"] = creditCard.CardExpiry;
+                values["cardCVV"] = creditCard.CardCVV;
 
                 var data = BasicRequest(values);
                 if (data != null)

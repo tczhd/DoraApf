@@ -9,6 +9,7 @@ using DoraAPF.org.Facade.Interfaces;
 using Microsoft.AspNetCore.Http;
 using DoraAPF.org.Facade.Interfaces.Payment;
 using DoraAPF.org.Models.Payment.Helcim;
+using DoraAPF.org.ViewModels.Payment;
 
 namespace DoraAPF.org.Controllers
 {
@@ -105,6 +106,42 @@ namespace DoraAPF.org.Controllers
             return View();
         }
 
+        [HttpPost]
+        public IActionResult ProcessPayment(PaymentViewModel PaymentViewModel)
+        {
+            var result = new PaymentResultViewModel();
+
+            if (ModelState.IsValid)
+            {
+                var request = new HelcimBasicRequestModel()
+                {
+                    OrderNumber = "Dora-" + DateTime.Now.ToString("yyyyMMddhhmmss"),
+                    TransactionType = "purchase",
+                    Test = true,
+                    Amount = 5,
+                    CreditCard = new HelcimCreditCardRequestModel()
+                    {
+                        CardHolderName = PaymentViewModel.CardHolderName,
+                        CardNumber = PaymentViewModel.CardNumber,
+                        CardExpiry = PaymentViewModel.CardExpiry,
+                        CardCVV = PaymentViewModel.CardCVV,
+                        CardHolderAddress = PaymentViewModel.CardHolderAddress,
+                        CardHolderPostalCode = PaymentViewModel.CardHolderPostalCode
+                    }
+                };
+
+                var paymentResult = _helcimPaymentService.ProcessPayment(request);
+                result.Success = paymentResult.Success;
+                result.Message = paymentResult.Message;
+            }
+            else
+            {
+                result.Message = "Invalid data.";
+            }
+
+            return View(result);
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
@@ -128,11 +165,11 @@ namespace DoraAPF.org.Controllers
                 CreditCard = new HelcimCreditCardRequestModel()
                 {
                     CardHolderName = "Jane Smith",
-                    cardNumber = "5454545454545454",
-                    cardExpiry = "1020",
-                    cardCVV = "100",
-                    cardHolderAddress = "123 Road Street",
-                    cardHolderPostalCode = "90212"
+                    CardNumber = "5454545454545454",
+                    CardExpiry = "1020",
+                    CardCVV = "100",
+                    CardHolderAddress = "123 Road Street",
+                    CardHolderPostalCode = "90212"
                 }
             };
 
