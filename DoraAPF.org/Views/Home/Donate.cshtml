@@ -23,93 +23,98 @@
 
         </div>
         <div class="row">
-            <div class="col-sm-6">
+            <div class="billing-info col-sm-6">
                 <div class="row">
-                    <div class=" col-sm-6">
-                        <label asp-for="CardHolderName"></label><br />
-                        <input type="text" asp-for="CardHolderName" placeholder="Card Holder Name" />
-                    </div>
-                    <div class="col-sm-6">
-
+                    <div class=" col-sm-12">
+                        <h3>2.  Select your billing info</h3>
                     </div>
                 </div>
                 <div class="row">
-                    <div class=" col-sm-6">
-                        <label asp-for="CardNumber"></label><br />
-                        <input type="text" asp-for="CardNumber" placeholder="Card Number" />
+                    <div class=" col-sm-12">
+                        <label asp-for="Title"></label><br />
+                        <select asp-for="Title" id="selectPatient" name="selectPatient"
+                                class="form-control"
+                                asp-items="@(new SelectList(Enum.GetValues(typeof(Title))))"></select>
                     </div>
-                    <div class="col-sm-6">
 
-                    </div>
                 </div>
                 <div class="row">
                     <div class=" col-sm-6">
-                        <label asp-for="CardExpiry"></label><br />
-                        <input type="text" asp-for="CardExpiry" placeholder="Expiration Date" />
-                    </div>
-                    <div class="col-sm-6">
-
+                        <label asp-for="FirstName"></label><br />
+                        <input type="text" asp-for="FirstName" placeholder="First Name"  />
+                        </div>
+                    <div class=" col-sm-6">
+                        <label asp-for="LastName"></label><br />
+                        <input type="text" asp-for="LastName" placeholder="Last Name" />
                     </div>
                 </div>
                 <div class="row">
-                    <div class=" col-sm-6">
-                        <label asp-for="CardCVV"></label><br />
-                        <input type="text" asp-for="CardCVV" placeholder="MMYY" />
+                    <div class=" col-sm-12">
+                        <label asp-for="Address1"></label><br />
+                        <input type="text" asp-for="Address1" placeholder="Address1" />
                     </div>
-                    <div class="col-sm-6">
+ 
+                </div>
+                <div class="row">
+                    <div class=" col-sm-12">
+                        <label asp-for="Address2"></label><br />
+                        <input type="text" asp-for="Address2" placeholder="Address2" />
+                    </div>
 
+                </div>
+                <div class="row">
+                    <div class=" col-sm-4">
+                        <label asp-for="City"></label><br />
+                        <input type="text" asp-for="City" placeholder="City" />
+                    </div>
+                    <div class=" col-sm-4">
+                        <label asp-for="State"></label><br />
+                        <input type="text" asp-for="State" placeholder="State" />
+                    </div>
+                    <div class=" col-sm-4">
+                        <label asp-for="County"></label><br />
+                        <input type="text" asp-for="County" placeholder="County" />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class=" col-sm-6">
+                        <label asp-for="PostalCode"></label><br />
+                        <input type="text" asp-for="PostalCode" placeholder="Postal Code" />
+                    </div>
+                    <div class=" col-sm-6">
+                        <label asp-for="Phone"></label><br />
+                        <input type="text" asp-for="Phone" placeholder="Phone Number" />
                     </div>
                 </div>
                 <div class="row">
-                    <div class=" col-sm-6">
-                        <label asp-for="CardHolderAddress"></label><br />
-                        <input type="text" asp-for="CardHolderAddress" placeholder="Billing Address" />
-                    </div>
-                    <div class="col-sm-6">
-
+                    <div class=" col-sm-12">
+                        <label asp-for="Email"></label><br />
+                        <input type="text" asp-for="Email" placeholder="Email" />
                     </div>
                 </div>
-                <div class="row">
-                    <div class=" col-sm-6">
-                        <label asp-for="CardHolderPostalCode"></label><br />
-                        <input type="text" asp-for="CardHolderPostalCode" placeholder="Postal Code" />
-                    </div>
-                    <div class="col-sm-6">
-
-                    </div>
-                </div>
-
             </div>
-            <div class="col-sm-6">
+            <div class="credit-card-info col-sm-6">
                 <div class="row">
-                    <div class=" col-sm-6">
-                        <h3>2.  Select your payment method</h3>
+                    <div class=" col-sm-12">
+                        <h3>3.  Select your payment method</h3>
                         <div>
                             <img src="~/images/creditCard/visa_small.gif" />
                             <img src="~/images/creditCard/mastercd_small.gif" />
                             <img src="~/images/creditCard/amex_small.gif" />
                         </div>
                     </div>
-                    <div class="col-sm-6">
-
-                    </div>
                 </div>
                 <div class="row">
-                    <div class=" col-sm-6">
+                    <div class=" col-sm-12">
                         <label asp-for="CardHolderName"></label><br />
                         <input type="text" asp-for="CardHolderName" placeholder="Card Holder Name" />
                     </div>
-                    <div class="col-sm-6">
-
-                    </div>
                 </div>
                 <div class="row">
-                    <div class=" col-sm-6">
+                    <div class=" col-sm-12">
                         <label asp-for="CardNumber"></label><br />
                         <input type="text" asp-for="CardNumber" placeholder="Card Number" />
-                    </div>
-                    <div class="col-sm-6">
-
                     </div>
                 </div>
                 <div class="row">
@@ -117,39 +122,13 @@
                         <label asp-for="CardExpiry"></label><br />
                         <input type="text" asp-for="CardExpiry" placeholder="Expiration Date" />
                     </div>
-                    <div class="col-sm-6">
-
-                    </div>
-                </div>
-                <div class="row">
                     <div class=" col-sm-6">
                         <label asp-for="CardCVV"></label><br />
                         <input type="text" asp-for="CardCVV" placeholder="MMYY" />
                     </div>
-                    <div class="col-sm-6">
-
-                    </div>
-                </div>
-                <div class="row">
-                    <div class=" col-sm-6">
-                        <label asp-for="CardHolderAddress"></label><br />
-                        <input type="text" asp-for="CardHolderAddress" placeholder="Billing Address" />
-                    </div>
-                    <div class="col-sm-6">
-
-                    </div>
-                </div>
-                <div class="row">
-                    <div class=" col-sm-6">
-                        <label asp-for="CardHolderPostalCode"></label><br />
-                        <input type="text" asp-for="CardHolderPostalCode" placeholder="Postal Code" />
-                    </div>
-                    <div class="col-sm-6">
-
-                    </div>
                 </div>
                 <div class=" row">
-                    <div class="button-section col-sm-12">
+                    <div class="button-section col-sm-6">
                         <button type="submit" class="btn btn-sm btn-primary">Submit</button>
 
                         <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i>Reset</button>

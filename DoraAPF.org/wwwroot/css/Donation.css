@@ -11,3 +11,7 @@ div.amount-col {
 div.button-section {
     padding-top:15px;
 }
+
+div.donation-section input[type="text"] {
+    width: 100%;
+}
