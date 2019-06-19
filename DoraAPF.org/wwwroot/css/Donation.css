@@ -3,7 +3,9 @@
 }
 
 div.amount-col {
+    padding:15px;
     font-size:22px;
+    border:1px  solid red;
 }
 
 div.button-section {
