@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Http;
 using DoraAPF.org.Facade.Interfaces.Payment;
 using DoraAPF.org.Models.Payment.Helcim;
 using DoraAPF.org.ViewModels.Payment;
+using DoraAPF.org.ViewModels.Common;
 
 namespace DoraAPF.org.Controllers
 {
@@ -90,9 +91,14 @@ namespace DoraAPF.org.Controllers
 
         public IActionResult Donate()
         {
+            var paymentViewModel = new PaymentViewModel();
+
             ViewData["Message"] = "Dora animal fundation protection Donation.";
 
-            return View();
+            paymentViewModel.Title = "Mr";
+            paymentViewModel.Country = "CA";
+
+            return View(paymentViewModel);
         }
 
         public IActionResult Contact()
@@ -108,7 +114,7 @@ namespace DoraAPF.org.Controllers
         }
 
         [HttpPost]
-        public IActionResult ProcessPayment(PaymentViewModel PaymentViewModel)
+        public IActionResult ProcessPayment(PaymentViewModel paymentViewModel)
         {
             if (ModelState.IsValid)
             {
@@ -119,15 +125,15 @@ namespace DoraAPF.org.Controllers
                     OrderNumber = "Dora-" + DateTime.Now.ToString("yyyyMMddhhmmss"),
                     TransactionType = "purchase",
                     Test = true,
-                    Amount = decimal.Parse(PaymentViewModel.PaymentAmount),
+                    Amount = decimal.Parse(paymentViewModel.PaymentAmount),
                     CreditCard = new HelcimCreditCardRequestModel()
                     {
-                        CardHolderName = PaymentViewModel.CardHolderName,
-                        CardNumber = PaymentViewModel.CardNumber,
-                        CardExpiry = PaymentViewModel.CardExpiry,
-                        CardCVV = PaymentViewModel.CardCVV,
-                        CardHolderAddress = PaymentViewModel.Address1,
-                        CardHolderPostalCode = PaymentViewModel.PostalCode
+                        CardHolderName = paymentViewModel.CardHolderName,
+                        CardNumber = paymentViewModel.CardNumber,
+                        CardExpiry = paymentViewModel.CardExpiry,
+                        CardCVV = paymentViewModel.CardCVV,
+                        CardHolderAddress = paymentViewModel.Address1,
+                        CardHolderPostalCode = paymentViewModel.PostalCode
                     }
                 };
 
@@ -139,7 +145,7 @@ namespace DoraAPF.org.Controllers
             }
             else
             {
-                return View("Donate", PaymentViewModel);
+                return View("Donate", paymentViewModel);
             }
 
 

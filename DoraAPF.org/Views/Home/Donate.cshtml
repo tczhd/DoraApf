@@ -32,9 +32,8 @@
                 <div class="row">
                     <div class=" col-sm-12">
                         <label asp-for="Title"></label><br />
-                        <select asp-for="Title" id="selectPatient" name="selectPatient"
-                                class="form-control title"
-                                asp-items="@(new SelectList(Enum.GetValues(typeof(Title))))"></select>
+                        @Html.DropDownListFor(m => m.Title, Model.GenericList.Titles, new { @class = "form-control title" })
+
                     </div>
 
                 </div>
@@ -79,9 +78,11 @@
                         <span asp-validation-for="State" class="text-danger"></span>
                     </div>
                     <div class=" col-sm-4">
-                        <label asp-for="County"></label><span class="required-field-red">*</span><br />
-                        <input type="text" asp-for="County" placeholder="County" />
-                        <span asp-validation-for="County" class="text-danger"></span>
+                        <label asp-for="Country"></label><span class="required-field-red">*</span><br />
+
+                        @Html.DropDownListFor(m => m.Country, Model.GenericList.Countries, new { @class = "form-control" })
+
+                        <span asp-validation-for="Country" class="text-danger"></span>
                     </div>
                 </div>
 

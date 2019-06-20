@@ -1,10 +1,13 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using DoraAPF.org.ViewModels.Common;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace DoraAPF.org.ViewModels.Payment
 {
     public class PaymentViewModel
     {
- 
+
         [Display(Name = "Title")]
         public string Title { get; set; }
         [Required]
@@ -26,7 +29,7 @@ namespace DoraAPF.org.ViewModels.Payment
         public string State { get; set; }
         [Required]
         [Display(Name = "Country")]
-        public string County { get; set; }
+        public string Country { get; set; }
         [Display(Name = "Phone")]
         public string Phone { get; set; }
         [Required]
@@ -50,5 +53,12 @@ namespace DoraAPF.org.ViewModels.Payment
         [Required]
         [Display(Name = "CVV")]
         public string CardCVV { get; set; }
+
+        public GenericListViewModel GenericList { get; set; }
+
+        public PaymentViewModel()
+        {
+            GenericList = new GenericListViewModel();
+        }
     }
 }
