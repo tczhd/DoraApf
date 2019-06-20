@@ -30,14 +30,15 @@ namespace DoraAPF.org.Controllers
             var ip = _accessor.HttpContext.Connection.RemoteIpAddress.ToString();
             var userAgent = Request.Headers["User-Agent"];
             var browserInfo = "";
-            if (userAgent.Any()) {
+            if (userAgent.Any())
+            {
                 browserInfo = userAgent.First();
                 if (browserInfo.Length > 50)
                 {
                     browserInfo = browserInfo.Substring(0, 50);
                 }
             }
-            
+
             _visitorService.SaveVisitor(ip, browserInfo);
 
             //test();
@@ -109,37 +110,39 @@ namespace DoraAPF.org.Controllers
         [HttpPost]
         public IActionResult ProcessPayment(PaymentViewModel PaymentViewModel)
         {
-            var result = new PaymentResultViewModel();
-
             if (ModelState.IsValid)
             {
+                var result = new PaymentResultViewModel();
+
                 var request = new HelcimBasicRequestModel()
                 {
                     OrderNumber = "Dora-" + DateTime.Now.ToString("yyyyMMddhhmmss"),
                     TransactionType = "purchase",
                     Test = true,
-                    Amount = 5,
+                    Amount = decimal.Parse(PaymentViewModel.PaymentAmount),
                     CreditCard = new HelcimCreditCardRequestModel()
                     {
                         CardHolderName = PaymentViewModel.CardHolderName,
                         CardNumber = PaymentViewModel.CardNumber,
                         CardExpiry = PaymentViewModel.CardExpiry,
                         CardCVV = PaymentViewModel.CardCVV,
-                        CardHolderAddress = PaymentViewModel.CardHolderAddress,
-                        CardHolderPostalCode = PaymentViewModel.CardHolderPostalCode
+                        CardHolderAddress = PaymentViewModel.Address1,
+                        CardHolderPostalCode = PaymentViewModel.PostalCode
                     }
                 };
 
                 var paymentResult = _helcimPaymentService.ProcessPayment(request);
                 result.Success = paymentResult.Success;
                 result.Message = paymentResult.Message;
+
+                return View(result);
             }
             else
             {
-                result.Message = "Invalid data.";
+                return View("Donate", PaymentViewModel);
             }
 
-            return View(result);
+
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

@@ -15,3 +15,12 @@ div.button-section {
 div.donation-section input[type="text"] {
     width: 100%;
 }
+
+div.donation-section select.title {
+    width:80px;
+}
+
+div.donation-section span.required-field-red {
+    color:red;
+    padding-left:3px;
+}

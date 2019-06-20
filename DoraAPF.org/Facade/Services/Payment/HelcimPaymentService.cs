@@ -5,12 +5,20 @@ using System.Text;
 using System.Xml;
 using System.Net;
 using System.Collections.Specialized;
+using Microsoft.Extensions.Options;
 
 namespace DoraAPF.org.Facade.Services.Payment
 {
     public class HelcimPaymentService : IThirdPartyPaymentService
     {
         private const string LIVE_URL = "https://secure.myhelcim.com/api/";
+
+        public HelcimPaymentService(IOptions<HelcimAccount> optionsAccessor)
+        {
+            _helcimAccount = optionsAccessor.Value;
+        }
+
+        public HelcimAccount _helcimAccount { get; }
 
         private XmlDocument BasicRequest(NameValueCollection values)
         {
@@ -39,8 +47,11 @@ namespace DoraAPF.org.Facade.Services.Payment
         private NameValueCollection GetBasicData(HelcimBasicRequestModel data)
         {
             var values = new NameValueCollection();
-            values["accountId"] = data.AccountId;
-            values["apiToken"] = data.ApiToken;
+            //values["accountId"] = data.AccountId;
+            //values["apiToken"] = data.ApiToken;
+            values["accountId"] = _helcimAccount.AccountId;
+            values["apiToken"] = _helcimAccount.ApiToken;
+            values["test"] =  "1" ;
 
             return values;
         }
@@ -54,7 +65,7 @@ namespace DoraAPF.org.Facade.Services.Payment
             var values = GetBasicData(paymentData);
             values["transactionType"] = "purchase";
             values["terminalId"] = paymentData.TerminalId;
-            values["test"] = paymentData.Test ? "1" : "0";
+            //values["test"] = paymentData.Test ? "1" : "0";
             values["amount"] = paymentData.Amount.ToString("0.00");
 
             if (paymentData.CreditCard != null)
