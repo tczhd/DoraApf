@@ -1,7 +1,53 @@
-﻿
+﻿@model DoraAPF.org.Models.Payment.PaymentResultModel
 @{
     ViewData["Title"] = "ProcessPayment";
 }
 
-<h2>ProcessPayment</h2>
 
+
+<div class="process-payment-section animated fadeIn">
+    <div class="row">
+        <div class=" col-sm-12">
+            <h2>Thank you for your donation</h2>
+        </div>
+    </div>
+    <hr />
+
+    <div class="row">
+        <div class=" col-sm-12">
+            <h3>Your donation Number: <b> @Model.PaymentId </b> </h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class=" col-sm-12">
+            <h3>Your donation total: <b>$@Model.PaymentAmount </b> </h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class=" col-sm-12">
+            <span class="payment-text">Card Holder Name: </span><span class="payment-value"> @Model.CardHolderName</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class=" col-sm-12">
+            <span class="payment-text"> Card Number: </span><span class="payment-value">   @Model.EncryptCardNumber</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class=" col-sm-12">
+
+            <span class="payment-text">    Approval Code: </span><span class="payment-value">     @Model.AuthCode</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class=" col-sm-12">
+
+            <span class="payment-text"> Payment Date: </span><span class="payment-value">  @Model.PaymentDate</span>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <link href="~/css/ProcessPayment.css" rel="stylesheet">
+}

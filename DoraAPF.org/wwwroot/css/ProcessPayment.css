@@ -1,0 +1,11 @@
+﻿div.process-payment-section span.payment-text {
+    font-size: 15px;
+    width: 150px;
+    display: inline-block;
+}
+
+
+div.process-payment-section span.payment-value {
+    font-size: 15px;
+    font-weight:bold;
+}

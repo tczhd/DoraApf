@@ -93,6 +93,8 @@ namespace DoraAPF.org.Facade.Services.Payments
                     payment.AuthCode = result.AuthCode;
 
                     _billingRepository.Update(billingInfo);
+
+                    result.PaymentId = payment.Id;
                 }
             }
             catch (Exception ex)

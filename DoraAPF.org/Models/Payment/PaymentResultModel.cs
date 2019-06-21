@@ -7,6 +7,7 @@ namespace DoraAPF.org.Models.Payment
 {
     public class PaymentResultModel: Result
     {
+        public int PaymentId { get; set; }
         public bool Approved { get; set; }
         public PaymentType PaymentType { get; set; }
         public string AuthCode { get; set; }

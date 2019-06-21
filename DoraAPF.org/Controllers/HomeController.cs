@@ -12,6 +12,7 @@ using DoraAPF.org.Models.Payment.Helcim;
 using DoraAPF.org.ViewModels.Payment;
 using DoraAPF.org.ViewModels.Common;
 using System.Globalization;
+using DoraAPF.org.Models.Payment;
 
 namespace DoraAPF.org.Controllers
 {
@@ -119,11 +120,7 @@ namespace DoraAPF.org.Controllers
         {
             if (ModelState.IsValid)
             {
-                var result = new PaymentResultViewModel();
-
-                var paymentResult = _paymentService.DoPayment(paymentViewModel);
-                result.Success = paymentResult.Success;
-                result.Message = paymentResult.Message;
+                var result = _paymentService.DoPayment(paymentViewModel);
 
                 return View(result);
             }
