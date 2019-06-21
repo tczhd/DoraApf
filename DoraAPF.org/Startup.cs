@@ -17,7 +17,7 @@ using DoraAPF.org.Data.Repository.Base;
 using DoraAPF.org.Facade.Interfaces;
 using DoraAPF.org.Facade.Services;
 using DoraAPF.org.Facade.Interfaces.Payment;
-using DoraAPF.org.Facade.Services.Payment;
+using DoraAPF.org.Facade.Services.Payments;
 using DoraAPF.org.Models.Payment.Helcim;
 
 namespace DoraAPF.org
@@ -77,6 +77,7 @@ namespace DoraAPF.org
 
             services.AddScoped<IVisitorService, VisitorService>();
             services.AddScoped<IThirdPartyPaymentService, HelcimPaymentService>();
+            services.AddScoped<IPaymentService, PaymentService>();
 
             services.Configure<HelcimAccount>(Configuration.GetSection("Helcim"));
 

@@ -13,4 +13,22 @@ namespace DoraAPF.org.Models
         [Description("Miss. ")]
         Miss = 4
     }
+
+    public enum PaymentType
+    {
+        [Description("Purchase")]
+        Purchase = 1,
+        [Description("Void")]
+        Void = 2,
+        [Description("Refund")]
+        Refund = 3
+    }
+
+    public enum Currency
+    {
+        [Description("USD")]
+        USD = 1,
+        [Description("CAD")]
+        CAD = 2
+    }
 }

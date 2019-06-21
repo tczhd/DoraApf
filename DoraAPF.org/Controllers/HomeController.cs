@@ -11,6 +11,7 @@ using DoraAPF.org.Facade.Interfaces.Payment;
 using DoraAPF.org.Models.Payment.Helcim;
 using DoraAPF.org.ViewModels.Payment;
 using DoraAPF.org.ViewModels.Common;
+using System.Globalization;
 
 namespace DoraAPF.org.Controllers
 {
@@ -18,13 +19,13 @@ namespace DoraAPF.org.Controllers
     {
         private readonly IVisitorService _visitorService;
         private IHttpContextAccessor _accessor;
-        private readonly IThirdPartyPaymentService _helcimPaymentService;
+        private readonly IPaymentService _paymentService;
 
-        public HomeController(IVisitorService visitorService, IHttpContextAccessor accessor, IThirdPartyPaymentService helcimPaymentService)
+        public HomeController(IVisitorService visitorService, IHttpContextAccessor accessor, IPaymentService paymentService)
         {
             _visitorService = visitorService;
             _accessor = accessor;
-            _helcimPaymentService = helcimPaymentService;
+            _paymentService = paymentService;
         }
         public IActionResult Index()
         {
@@ -120,24 +121,7 @@ namespace DoraAPF.org.Controllers
             {
                 var result = new PaymentResultViewModel();
 
-                var request = new HelcimBasicRequestModel()
-                {
-                    OrderNumber = "Dora-" + DateTime.Now.ToString("yyyyMMddhhmmss"),
-                    TransactionType = "purchase",
-                    Test = true,
-                    Amount = decimal.Parse(paymentViewModel.PaymentAmount),
-                    CreditCard = new HelcimCreditCardRequestModel()
-                    {
-                        CardHolderName = paymentViewModel.CardHolderName,
-                        CardNumber = paymentViewModel.CardNumber,
-                        CardExpiry = paymentViewModel.CardExpiry,
-                        CardCVV = paymentViewModel.CardCVV,
-                        CardHolderAddress = paymentViewModel.Address1,
-                        CardHolderPostalCode = paymentViewModel.PostalCode
-                    }
-                };
-
-                var paymentResult = _helcimPaymentService.ProcessPayment(request);
+                var paymentResult = _paymentService.DoPayment(paymentViewModel);
                 result.Success = paymentResult.Success;
                 result.Message = paymentResult.Message;
 
@@ -147,8 +131,6 @@ namespace DoraAPF.org.Controllers
             {
                 return View("Donate", paymentViewModel);
             }
-
-
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
@@ -182,7 +164,7 @@ namespace DoraAPF.org.Controllers
                 }
             };
 
-            var result = _helcimPaymentService.ProcessPayment(request);
+          //  var result = _helcimPaymentService.ProcessPayment(request);
         }
     }
 }

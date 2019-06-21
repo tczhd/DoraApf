@@ -19,6 +19,7 @@ namespace DoraAPF.org.Models.Payment.Helcim
         public string CardToken { get; set; }
         public string CardF4L4 { get; set; }
         public string Comments { get; set; }
+        public Currency Currency { get; set; }
         public HelcimCreditCardRequestModel CreditCard { get; set; }
     }
 }

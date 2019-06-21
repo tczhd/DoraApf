@@ -6,8 +6,11 @@ using System.Xml;
 using System.Net;
 using System.Collections.Specialized;
 using Microsoft.Extensions.Options;
+using System.Xml.Serialization;
+using System.IO;
+using DoraAPF.org.Models.Payment;
 
-namespace DoraAPF.org.Facade.Services.Payment
+namespace DoraAPF.org.Facade.Services.Payments
 {
     public class HelcimPaymentService : IThirdPartyPaymentService
     {
@@ -51,7 +54,9 @@ namespace DoraAPF.org.Facade.Services.Payment
             //values["apiToken"] = data.ApiToken;
             values["accountId"] = _helcimAccount.AccountId;
             values["apiToken"] = _helcimAccount.ApiToken;
-            values["test"] =  "1" ;
+
+            // Set to test
+            values["test"] = "1";
 
             return values;
         }
@@ -85,23 +90,32 @@ namespace DoraAPF.org.Facade.Services.Payment
                 values["comments"] = paymentData.Comments;
             }
 
-
-            var data = BasicRequest(values);
-            if (data != null)
+            var xmlDocument = BasicRequest(values);
+            if (xmlDocument != null)
             {
-                result.Success = true;
-                result.Message = "Process success. ";
-                result.Data = data;
+                var helcimResult  = GetHelcimResult(xmlDocument);
+                var paymentResult  = (PaymentResultModel)helcimResult;
+                paymentResult.PaymentType = PaymentType.Purchase;
+                paymentResult.Currency = paymentData.Currency;
+                result = paymentResult;
+
+                if (helcimResult.Response == "1" && helcimResult.ResponseMessage == "APPROVED")
+                {
+                    paymentResult.Approved = true;
+                    result.Success = true;
+                    result.Message = "Process payment success. ";
+                }
+                else {
+                    result.Message = "Process payment failed ";
+                }
             }
             else
             {
-                result.Message = "Process failed ";
+                result.Message = "Process payment failed ";
             }
 
             return result;
         }
-        ////"<?xml version=\"1.0\"?><message><response>1</response><responseMessage>APPROVED</responseMessage><notice></notice><transaction><transactionId>4188128</transactionId><type>purchase</type><date>2019-06-17</date><time>12:33:32</time><cardHolderName>Jane Smith</cardHolderName><amount>5.00</amount><currency>CAD</currency><cardNumber>5454********5454</cardNumber><cardToken>fc8817ed7f7c974807369c</cardToken><expiryDate>1020</expiryDate><cardType>MasterCard</cardType><avsResponse>X</avsResponse><cvvResponse>M</cvvResponse><approvalCode>T1E3ST</approvalCode><orderNumber>INV1001</orderNumber><customerCode>CST1001</customerCode></transaction></message>"
-
 
         public Result ProcessVoid(BasicRequestModel requestModel)
         {
@@ -160,6 +174,15 @@ namespace DoraAPF.org.Facade.Services.Payment
                     result.Data = data;
                 }
             }
+
+            return result;
+        }
+
+        private HelcimResponseModel GetHelcimResult(XmlDocument xmlDocument)
+        {
+            var serializer = new XmlSerializer(typeof(HelcimResponseModel), new XmlRootAttribute("message"));
+            var stringReader = new StringReader(xmlDocument.InnerXml);
+            var result = (HelcimResponseModel)serializer.Deserialize(stringReader);
 
             return result;
         }

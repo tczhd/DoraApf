@@ -1,4 +1,5 @@
-﻿using DoraAPF.org.ViewModels.Common;
+﻿using DoraAPF.org.Models.Payment;
+using DoraAPF.org.ViewModels.Common;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -59,6 +60,29 @@ namespace DoraAPF.org.ViewModels.Payment
         public PaymentViewModel()
         {
             GenericList = new GenericListViewModel();
+        }
+
+        public static implicit operator PaymentModel(PaymentViewModel source)
+        {
+            return new PaymentModel
+            {
+                Address1 = source.Address1,
+                Address2 = source.Address2,
+                CardCVV = source.CardCVV,
+                CardExpiry = source.CardExpiry,
+                CardHolderName = source.CardHolderName,
+                CardNumber = source.CardNumber,
+                City = source.City,
+                Country = source.Country,
+                Email = source.Email,
+                FirstName = source.FirstName,
+                LastName = source.LastName,
+                PaymentAmount = source.PaymentAmount,
+                Phone = source.Phone,
+                PostalCode = source.PostalCode,
+                State = source.State,
+                Title = source.Title
+            };
         }
     }
 }
