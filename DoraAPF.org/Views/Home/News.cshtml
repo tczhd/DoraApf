@@ -3,7 +3,12 @@
     ViewData["Title"] = "News";
 }
 
-<div id="accordion">
+
+<div>
+    @Html.Raw(@Model.HtmlContent);
+</div>
+
+@*<div id="accordion">
 
     <div class="card">
         <div class="card-header" id="headingOne">
@@ -172,26 +177,41 @@
         <div class="card-header" id="headingSix">
             <h3 class="mb-0">
                 <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-
-                    <span style="font-size:16px;"> Richmond News reported on July 8, 2019 </span>
+                    <span style="font-size:16px;"> City News reported on July 5, 2019 </span>
+                   
                 </button>
             </h3>
         </div>
         <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordion">
             <div class="card-body" style="padding-left:30px;">
 
-                <h3><a href="https://www.richmond-news.com/news/teenager-gifts-1-500-to-richmond-animal-charity-after-pup-dies-on-flight-from-china-1.23879312" target="_blank"> Teenager gifts $1,500 to Richmond animal charity after pup dies on flight from China</a></h3>
-
-                <img src="~/images/News/RichmondNew1.jpg" />
-                <img src="~/images/News/RichmondNew2.jpg" />
-                <img src="~/images/News/RichmondNew3.jpg" />
+                <h3><a href="https://www.citynews1130.com/2019/07/05/puppy-dies-after-five-day-flight-in-cargo-from-china-to-vancouver/" target="_blank">Puppy dies after five-day flight in cargo from China to Vancouver</a></h3>
 
             </div>
         </div>
     </div>
 
+    <div class="card">
+        <div class="card-header" id="headingSeven">
+            <h3 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                    <span style="font-size:16px;"> Richmond News reported on July 8, 2019 </span>
+                </button>
+            </h3>
+        </div>
+        <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#accordion">
+            <div class="card-body" style="padding-left:30px;">
+
+               
+                <h3><a href="https://www.richmond-news.com/news/teenager-gifts-1-500-to-richmond-animal-charity-after-pup-dies-on-flight-from-china-1.23879312" target="_blank"> Teenager gifts $1,500 to Richmond animal charity after pup dies on flight from China</a></h3>
+
+                <img src="~/images/News/RichmondNew1.jpg" />
+                <img src="~/images/News/RichmondNew2.jpg" />
+                <img src="~/images/News/RichmondNew3.jpg" />
+            </div>
+        </div>
+    </div>
 
 
-
-</div>
+</div>*@
 

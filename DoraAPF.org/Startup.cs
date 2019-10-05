@@ -19,6 +19,8 @@ using DoraAPF.org.Facade.Services;
 using DoraAPF.org.Facade.Interfaces.Payment;
 using DoraAPF.org.Facade.Services.Payments;
 using DoraAPF.org.Models.Payment.Helcim;
+using DoraAPF.org.Facade.Interfaces.WebPages;
+using DoraAPF.org.Facade.Services.WebPages;
 
 namespace DoraAPF.org
 {
@@ -78,7 +80,7 @@ namespace DoraAPF.org
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
-            services.AddDefaultIdentity<IdentityUser > ()
+            services.AddDefaultIdentity<IdentityUser>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
@@ -87,6 +89,7 @@ namespace DoraAPF.org
             services.AddScoped<IVisitorService, VisitorService>();
             services.AddScoped<IThirdPartyPaymentService, HelcimPaymentService>();
             services.AddScoped<IPaymentService, PaymentService>();
+            services.AddScoped<IWebPageService,WebPageService>(); 
 
             services.Configure<HelcimAccount>(Configuration.GetSection("Helcim"));
 
@@ -109,7 +112,7 @@ namespace DoraAPF.org
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-           // app.UseSession();
+            // app.UseSession();
             app.UseCookiePolicy();
 
             app.UseAuthentication();

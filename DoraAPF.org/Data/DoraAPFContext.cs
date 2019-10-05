@@ -21,6 +21,7 @@ namespace DoraAPF.org.Data
         public DbSet<VisitorLog> VisitorLog { get; set; }
         public DbSet<BillingInfo> BillingInfo { get; set; }
         public DbSet<Payment> Payment { get; set; }
+        public DbSet<WebPage> WebPage { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -84,6 +85,15 @@ namespace DoraAPF.org.Data
                     .HasForeignKey(d => d.BillingId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Payment_BillingInfo");
+            });
+
+            modelBuilder.Entity<WebPage>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+                entity.Property(e => e.Id).ValueGeneratedOnAdd();
+                entity.Property(e => e.Name).HasMaxLength(100).IsRequired();
+                entity.Property(e => e.HtmlContent).IsRequired();
+                entity.HasIndex(e => e.WebPageTypeId).IsUnique();
             });
         }
     }

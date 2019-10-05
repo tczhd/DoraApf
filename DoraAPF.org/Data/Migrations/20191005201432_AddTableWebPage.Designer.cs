@@ -4,14 +4,16 @@ using DoraAPF.org.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DoraAPF.org.Data.Migrations
 {
     [DbContext(typeof(DoraAPFContext))]
-    partial class DoraAPFContextModelSnapshot : ModelSnapshot
+    [Migration("20191005201432_AddTableWebPage")]
+    partial class AddTableWebPage
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -168,9 +170,6 @@ namespace DoraAPF.org.Data.Migrations
                     b.Property<int>("WebPageTypeId");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("WebPageTypeId")
-                        .IsUnique();
 
                     b.ToTable("WebPage");
                 });

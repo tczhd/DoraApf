@@ -13,6 +13,8 @@ using DoraAPF.org.ViewModels.Payment;
 using DoraAPF.org.ViewModels.Common;
 using System.Globalization;
 using DoraAPF.org.Models.Payment;
+using DoraAPF.org.Facade.Interfaces.WebPages;
+using DoraAPF.org.ViewModels.WebPages;
 
 namespace DoraAPF.org.Controllers
 {
@@ -21,12 +23,15 @@ namespace DoraAPF.org.Controllers
         private readonly IVisitorService _visitorService;
         private IHttpContextAccessor _accessor;
         private readonly IPaymentService _paymentService;
-
-        public HomeController(IVisitorService visitorService, IHttpContextAccessor accessor, IPaymentService paymentService)
+        private readonly IWebPageService _webPageService;
+        public HomeController(IVisitorService visitorService
+            , IHttpContextAccessor accessor, IPaymentService paymentService
+            , IWebPageService webPageService)
         {
             _visitorService = visitorService;
             _accessor = accessor;
             _paymentService = paymentService;
+            _webPageService = webPageService;
         }
         public IActionResult Index()
         {
@@ -60,7 +65,9 @@ namespace DoraAPF.org.Controllers
         {
             ViewData["Message"] = "Dora animal fundation protection Story.";
 
-            return View();
+            var model = _webPageService.GetWebContent(4);
+
+            return View((WebPageViewModel)model);
         }
 
         public IActionResult Team()
@@ -74,14 +81,18 @@ namespace DoraAPF.org.Controllers
         {
             ViewData["Message"] = "Dora animal fundation protection activity.";
 
-            return View();
+            var model = _webPageService.GetWebContent(6);
+
+            return View((WebPageViewModel)model);
         }
 
         public IActionResult News()
         {
             ViewData["Message"] = "Dora animal fundation protection news.";
 
-            return View();
+            var model = _webPageService.GetWebContent(5);
+
+            return View((WebPageViewModel)model);
         }
 
         public IActionResult Letters()
