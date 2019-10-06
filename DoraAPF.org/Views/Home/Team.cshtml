@@ -3,7 +3,12 @@
     ViewData["Title"] = "Team";
 }
 
-<h2 style="text-align:center;">Dora animal fundation protection team.</h2>
+
+<div>
+    @Html.Raw(@Model.HtmlContent);
+</div>
+
+@*<h2 style="text-align:center;">Dora animal fundation protection team.</h2>
 
 <section class="member">
     <div class="card" style="width:100%">
@@ -112,7 +117,7 @@
     </div>
     <br>
 
-</section>
+</section>*@
 
 @section Styles {
     <link href="~/css/members.css" rel="stylesheet">

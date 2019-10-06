@@ -49,9 +49,9 @@ namespace DoraAPF.org.Controllers
 
             _visitorService.SaveVisitor(ip, browserInfo);
 
-            //test();
+            var model = _webPageService.GetWebContent(1);
 
-            return View();
+            return View((WebPageViewModel)model);
         }
 
         public IActionResult About()
@@ -74,7 +74,9 @@ namespace DoraAPF.org.Controllers
         {
             ViewData["Message"] = "Dora animal fundation protection team.";
 
-            return View();
+            var model = _webPageService.GetWebContent(3);
+
+            return View((WebPageViewModel)model);
         }
 
         public IActionResult Activities()

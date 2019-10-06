@@ -42,8 +42,11 @@
     </a>
 </div>
 
+<div>
+    @Html.Raw(@Model.HtmlContent);
+</div>
 
-<div class="row section-group">
+@*<div class="row section-group">
     <div class="col-md-6 section-item">
         <div class="section-card">
             <h2 class="title">About Us</h2>
@@ -129,7 +132,7 @@
     <div class="col-md-6 section-item">
 
     </div>
-</div>
+</div>*@
 
 @section Styles {
     <link href="~/css/home.css" rel="stylesheet">
