@@ -30,5 +30,21 @@ namespace DoraAPF.org.Facade.Services.WebPages
 
             return null;
         }
+
+        public bool SubmitWebContent(int webPageTypeId, string htmlContent)
+        {
+            var webPageSpecification = new WebPageSpecification();
+            webPageSpecification.AddWebPageTypeId(webPageTypeId);
+            var content = _webPageRepository.GetSingleBySpec(webPageSpecification);
+
+            if (content != null)
+            {
+                content.HtmlContent = htmlContent;
+                _webPageRepository.Update(content);
+                return true;
+            }
+
+            return false;
+        }
     }
 }

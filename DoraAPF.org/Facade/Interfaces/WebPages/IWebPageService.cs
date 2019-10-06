@@ -9,5 +9,7 @@ namespace DoraAPF.org.Facade.Interfaces.WebPages
     public interface IWebPageService
     {
         WebPageModel GetWebContent(int webPageTypeId);
+
+        bool SubmitWebContent(int webPageTypeId, string htmlContent);
     }
 }
