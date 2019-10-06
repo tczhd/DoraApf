@@ -81,6 +81,7 @@ namespace DoraAPF.org
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             services.AddDefaultIdentity<IdentityUser>()
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
@@ -97,7 +98,7 @@ namespace DoraAPF.org
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider serviceProvider)
         {
             if (env.IsDevelopment())
             {
@@ -123,6 +124,30 @@ namespace DoraAPF.org
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            //CreateUserRoles(serviceProvider).Wait();
+        }
+
+        private async Task CreateUserRoles(IServiceProvider serviceProvider)
+        {
+            var RoleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+            var UserManager = serviceProvider.GetRequiredService<UserManager<IdentityUser>>();
+            var email = "david1@orderbot.com";
+ 
+            IdentityResult roleResult;
+            //Adding Admin Role
+            var roleCheck = await RoleManager.RoleExistsAsync("Admin");
+            if (!roleCheck)
+            {
+                //create the roles and seed them to the database
+                roleResult = await RoleManager.CreateAsync(new IdentityRole("Admin"));
+            }
+
+            var user = UserManager.FindByEmailAsync(email).Result;
+            if (user != null)
+            {
+                var result1 = await UserManager.AddToRoleAsync(user, "Admin");
+            }
         }
     }
 }
