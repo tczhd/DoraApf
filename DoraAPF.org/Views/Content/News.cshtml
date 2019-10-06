@@ -1,34 +1,36 @@
 ﻿@using  DoraAPF.org.ViewModels.WebPages
 @model WebPageViewModel
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "News";
 }
 
-<h2>Edit Home Page</h2>
+<h2>Edit News</h2>
+
 <span style="display:none;"><label id="WebPageTypeIdLabel" asp-for="WebPageTypeId">@Model.WebPageTypeId</label></span>
+
 <div class="row">
     <div class="col-md-12">
         <section id="loginForm">
             @using (Html.BeginForm("Index", "Home", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, true, new { @class = "form-horizontal", role = "form" }))
             {
-                @*@Html.AntiForgeryToken()*@
+            @*@Html.AntiForgeryToken()*@
 
-                <hr />
+            <hr />
 
-                <div class="form-group">
-                    @*<label class="col-md-4 control-label">Message </label>*@
-                    <div class="col-md-12">
-                        <div class="input-group">
-                            @Html.TextAreaFor(m => m.HtmlContent, new { rows = "20", style = "resize:none;width:100%;", placeholder = Html.DisplayNameFor(m => m.HtmlContent), @class = "form-control input-lg textarea-editor" })
-                        </div>
+            <div class="form-group">
+                @*<label class="col-md-4 control-label">Message </label>*@
+                <div class="col-md-12">
+                    <div class="input-group">
+                        @Html.TextAreaFor(m => m.HtmlContent, new { rows = "20", style = "resize:none;width:100%;", placeholder = Html.DisplayNameFor(m => m.HtmlContent), @class = "form-control input-lg textarea-editor" })
                     </div>
                 </div>
+            </div>
 
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="button" value="Submit" class="btn btn-default submit" />
-                    </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="button" value="Submit" class="btn btn-default submit" />
                 </div>
+            </div>
             }
         </section>
     </div>

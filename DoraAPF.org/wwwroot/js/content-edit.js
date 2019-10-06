@@ -3,17 +3,19 @@
     //$('.textarea-editor').wysihtml5();
     $('.textarea-editor').summernote(
         {
-            height: 300,                 // set editor height
+            height: 600,                 // set editor height
             minHeight: null,             // set minimum height of editor
             maxHeight: null,             // set maximum height of editor
             focus: true                  // set focus to editable area after initializing summernote
         });
 
-    $('.login').click(function () {
+    $('.submit').click(function () {
         var markupStr = $('.textarea-editor').summernote('code');
+        var webPageTypeIdLabel = $('#WebPageTypeIdLabel');
+        var webPageTypeId = webPageTypeIdLabel.text();
 
         var newContent = {
-            web_page_type_id: 4,
+            web_page_type_id: parseInt(webPageTypeId),
             html_content: markupStr
         };
 
