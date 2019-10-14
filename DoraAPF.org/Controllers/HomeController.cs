@@ -58,7 +58,9 @@ namespace DoraAPF.org.Controllers
         {
             ViewData["Message"] = "About Dora animal fundation protection.";
 
-            return View();
+            var model = _webPageService.GetWebContent(2);
+
+            return View((WebPageViewModel)model);
         }
 
         public IActionResult Story()

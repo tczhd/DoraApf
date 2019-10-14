@@ -56,7 +56,13 @@ namespace DoraAPF.org.Controllers
         {
             ViewData["Message"] = "About Dora animal fundation protection.";
 
-            return View();
+            var content = GetContent(2);
+            if (content != null)
+            {
+                return View(content);
+            }
+
+            return Redirect("/Identity/Account/AccessDenied");
         }
 
         public IActionResult Story()
