@@ -32,9 +32,9 @@
 
             </div>
 
-            <div class="donate-wrapper">
+            @*<div class="donate-wrapper">
                 <a asp-area="" asp-controller="Home" asp-action="Donate" class="donate-link">Please donate</a>
-            </div>
+            </div>*@
             <div class="visitors">
                 @await Component.InvokeAsync("Visitors", new { userName = "" })
             </div>
@@ -53,7 +53,7 @@
                             <li><a asp-controller="Home" asp-action="Activities">ACTIVITIES</a></li>
                         </ul>
                     </li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Donate">DONATE</a></li>
+                    @*<li><a asp-area="" asp-controller="Home" asp-action="Donate">DONATE</a></li>*@
                 </ul>
                 <partial name="_LoginPartial" />
             </div>
