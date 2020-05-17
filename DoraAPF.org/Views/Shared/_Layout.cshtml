@@ -22,29 +22,34 @@
     <nav class="doraapf-navbar navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
+                <div class="visitors-hide">
+                    @await Component.InvokeAsync("Visitors", new { userName = "" })
+                </div>
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand"><img src="~/images/DoraAnimal.svg" /> </a>
 
             </div>
-
-            @*<div class="donate-wrapper">
-                <a asp-area="" asp-controller="Home" asp-action="Donate" class="donate-link">Please donate</a>
-            </div>*@
-            <div class="visitors">
-                @await Component.InvokeAsync("Visitors", new { userName = "" })
-            </div>
-
-            <div class="navbar-collapse collapse clearfix" style="clear:both;">
+     
+                <div class="logo col col-md-2 "><img src="~/images/logo.jpg" height="70" /></div>
+                <div class="col col-md-8 title-column" style="text-align:center;">
+                    <div class="dora-animal-protection-foundation-title  justify-content-center">
+                        Dora Animal Protection Foundation
+                    </div>
+                </div>
+                <div class="col col-md-2 visitors ">
+                    @await Component.InvokeAsync("Visitors", new { userName = "" })
+                </div>
+   
+            <div class="menu navbar-collapse collapse clearfix" style="clear:both; ">
                 <ul class="nav navbar-nav">
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">HOME</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="About">ABOUT US</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Team">MEMBERS</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Story">OUR GOAL</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Story">SUPPORT SPCA</a></li>
                     <li><a asp-controller="Home" asp-action="News">NEWS</a></li>
 
                     <li class="dropdown">

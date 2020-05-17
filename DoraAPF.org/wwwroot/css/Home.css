@@ -17,7 +17,7 @@ div.section-item div.section-card {
 
 div.section-group img {
     max-width: 100%;
-    height: 400px;
+
 }
 
 div.section-group div.button{
@@ -28,4 +28,56 @@ div.section-group div.button{
 div.section-group h2.title {
    color:orangered;
    padding-bottom:20px;
+}
+
+div.section-group div.card-header {
+    margin-left: auto;
+    margin-right: auto;
+    border: 2px solid;
+    border-color: #ea6c11;
+    background-color: #ea6c11;
+    color: white;
+}
+
+div.section-group div.card-learn-more {
+    margin-left: auto;
+    margin-right: auto;
+    border: 2px solid;
+    border-color: #ea6c11;
+    background-color: #ea6c11;
+    color: white;
+}
+
+/* Hide/rearrange for smaller screens */
+@media screen and (max-width: 767px) {
+    div.section-group div.card-header {
+        margin-bottom: 20px;
+        width: 70%;
+        font-size: 24px;
+        padding: 12px 10px;
+    }
+
+    div.section-group div.card-learn-more {
+        margin-top: 20px;
+        width: 40%;
+        font-size: 18px;
+        padding: 10px 10px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    div.section-group div.card-header {
+        margin-bottom: 20px;
+        width: 60%;
+        font-size: 28px;
+        padding: 12px 30px;
+    }
+
+    div.section-group div.card-learn-more {
+
+        margin-top: 20px;
+        width: 30%;
+        font-size: 20px;
+        padding: 10px 20px;
+    }
 }

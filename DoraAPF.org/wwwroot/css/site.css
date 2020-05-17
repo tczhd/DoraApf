@@ -1,7 +1,7 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\ 
 for details on configuring this project to bundle and minify static web assets. */
 body {
-    padding-top: 100px;
+    padding-top: 140px;
     padding-bottom: 20px;
 }
 
@@ -32,6 +32,7 @@ body {
     /*//background-color: #00337f;*/
     background-color: #f2f2f2;
     border-color: #f2f2f2;
+    height: 140px;
 }
 
 .navbar-inverse .navbar-header > a {
@@ -55,7 +56,6 @@ body {
     }
 
 .navbar a.donate-link {
-    
     box-shadow:0 3px 0 0 #c4550e;
 }
 
@@ -74,11 +74,19 @@ body {
 
 .navbar div.visitors {
     float: right;
-    text-align: center;
     font-size: 18px;
-    padding: 5px 25px;
+   
     margin-top: 10px;
     border-radius: 5px;
+}
+
+
+.navbar div.dora-animal-protection-foundation-title {
+    color: white;
+    border: 2px solid;
+    border-color: #ea6c11;
+    background-color: #ea6c11;
+    display: inline-block;
 }
 
 .body-content-without-footer {
@@ -102,4 +110,79 @@ video {
     .carousel-caption {
         display: none;
     }
+
+    .navbar {
+        height: 120px;
+    }
+
+    body {
+        padding-top: 120px;
+    }
+
+    .navbar div.logo{
+        display:none;
+        padding:0 !important;
+    }
+
+    .navbar div.title-column {
+        padding:0;
+    }
+
+    .navbar div.menu {
+        background-color: white;
+    }
+
+    .navbar div.visitors {
+        display: none;
+    }
+
+    .navbar div.visitors-hide {
+        display: inline-block;
+        text-align: center;
+        font-size: 18px;
+        padding: 5px 25px;
+        margin-top: 10px;
+        border-radius: 5px;
+    }
+
+    .navbar div.dora-animal-protection-foundation-title {
+        font-size: 22px;
+        padding: 12px 10px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .navbar {
+        height: 140px;
+    }
+
+    body {
+        padding-top: 140px;
+    }
+
+    .navbar div.menu {
+        margin-top: 20px;
+    }
+
+    .navbar div.dora-animal-protection-foundation-title {
+        margin-bottom: 20px;
+        font-size: 30px;
+        padding: 12px 60px;
+    }
+
+    .navbar div.logo {
+        display: inline-block;
+        padding: 0 !important;
+    }
+
+    .navbar div.visitors {
+        display: inline-block;
+        text-align: right;
+        padding: 5px 0px;
+    }
+
+    .navbar div.visitors-hide {
+        display: none;
+    }
+
 }
